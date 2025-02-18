@@ -25,7 +25,7 @@ export const MongoClient = {
     }
   },
 
-  async getCollection(name: string): Promise<Collection> {
+  getCollection(name: string): Collection {
     return this.client.db().collection(name);
   },
 };

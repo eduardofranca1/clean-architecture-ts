@@ -4,8 +4,6 @@
     "module": "CommonJS",
     "strict": true,
     "outDir": "./dist",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "esModuleInterop": true
   },
   "include": ["src", "tests"],

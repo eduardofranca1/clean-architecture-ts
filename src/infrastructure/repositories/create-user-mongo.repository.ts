@@ -1,10 +1,10 @@
-import { CreateUserParams } from "../../domain/types/create-user";
-import { UserModel } from "../../domain/models/user";
-import { ICreateUserRepository } from "../../domain/repositories/create-user.repository";
+import { User } from "../../domain/models/user";
 import { MongoClient } from "../database/mongo-client";
+import { ICreateUserRepository } from "../../application/ports/create-user-repository";
+import { CreateUserParams } from "../../domain/models/create-user";
 
 export class CreateUserMongoRepository implements ICreateUserRepository {
-  async create(data: CreateUserParams): Promise<UserModel> {
+  async create(data: CreateUserParams): Promise<User> {
     const userCollection = MongoClient.getCollection("users");
     const { insertedId } = await userCollection.insertOne({
       name: data.name,

@@ -1,4 +1,4 @@
-import { CreateUserParams } from "../../../src/domain/types/create-user";
+import { CreateUserParams } from "../../../src/domain/models/create-user";
 
 export const mockCreateUserParams = (): CreateUserParams => ({
   name: "Curry",

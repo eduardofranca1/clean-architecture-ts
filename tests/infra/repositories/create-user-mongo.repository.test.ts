@@ -1,6 +1,6 @@
 import { Collection } from "mongodb";
-import { MongoClient } from "../../../src/infra/database/mongo-client";
-import { CreateUserMongoRepository } from "../../../src/infra/repositories/create-user-mongo.repository";
+import { MongoClient } from "../../../src/infrastructure/database/mongo-client";
+import { CreateUserMongoRepository } from "../../../src/infrastructure/repositories/create-user-mongo.repository";
 import { mockCreateUserParams } from "../../domain/mocks/mock-user";
 
 let userCollection: Collection;

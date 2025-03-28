@@ -1,7 +1,7 @@
 import { Collection } from "mongodb";
 import { MongoClient } from "../../../src/infrastructure/database/mongo-client";
 import { CreateUserMongoRepository } from "../../../src/infrastructure/repositories/create-user-mongo.repository";
-import { mockCreateUserParams } from "../../domain/mocks/mock-user";
+import { createUserMock } from "../../domain/mocks/mock-user";
 
 let userCollection: Collection;
 
@@ -26,7 +26,7 @@ describe("Create_User_Mongo_Repository", () => {
   test("should create a user successfully", async () => {
     const sut = makeSut();
 
-    const result = await sut.create(mockCreateUserParams());
+    const result = await sut.create(createUserMock());
 
     const count = await userCollection.countDocuments();
     expect(count).toBe(1);

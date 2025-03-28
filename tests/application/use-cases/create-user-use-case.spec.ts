@@ -1,4 +1,4 @@
-import { ICreateUserRepository } from "../../../src/application/ports/create-user-repository";
+import { ICreateUserRepository } from "../../../src/application/ports/repositories/create-user-repository";
 import { CreateUserUseCase } from "../../../src/application/use-cases/create-user-use-case";
 import { CreateUserParams } from "../../../src/domain/models/create-user";
 import { User } from "../../../src/domain/models/user";

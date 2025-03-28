@@ -1,5 +1,5 @@
 import express from "express";
-import { MongoClient } from "./infrastructure/database/mongo-client";
+import { MongoClient } from "../database/mongo-client";
 
 const app = async () => {
   await MongoClient.connect();

@@ -1,5 +1,6 @@
 import express from "express";
 import { MongoClient } from "../database/mongo-client";
+import { setupRoutes } from "./setup/setup-routes";
 
 const app = async () => {
   await MongoClient.connect();
@@ -7,6 +8,8 @@ const app = async () => {
   const server = express();
 
   server.use(express.json());
+
+  setupRoutes(server);
 
   const port = 8080;
 

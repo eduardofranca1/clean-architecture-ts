@@ -1,6 +1,6 @@
-import { Application } from "express";
-import { userRoutes } from "../routes/user";
+import { Application } from 'express';
+import { userRoutes } from '../routes/user';
 
 export const setupRoutes = (app: Application): void => {
-  app.use("/users", userRoutes);
+  app.use('/users', userRoutes);
 };

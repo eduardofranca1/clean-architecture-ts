@@ -1,24 +1,24 @@
-import { NextFunction, Request, Response } from "express";
-import { Controller } from "../../../application/ports/controllers/controller";
+import { Request, Response } from 'express';
+import { Controller } from '../../../application/ports/controllers/controller';
+import { DefaultError } from '../../../application/error/default-error';
 
 export const expressRouteAdapter = <T>(controller: Controller<T>) => {
-  return async (request: Request, response: Response, next: NextFunction) => {
+  return async (request: Request, response: Response) => {
     return Promise.resolve(
       controller.handleRequest({
         query: request.query,
         params: request.params,
         body: request.body,
         headers: request.headers,
-      })
+      }),
     )
       .then((controllerResponse) => {
         response
           .status(controllerResponse.statusCode)
           .json(controllerResponse.body);
-        return next();
       })
-      .catch((error: Error) => {
-        return next(error);
+      .catch((error: DefaultError) => {
+        response.status(error.statusCode).json(error.message);
       });
   };
 };

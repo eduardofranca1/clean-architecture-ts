@@ -16,7 +16,8 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.2",
-    "mongodb": "^6.13.0"
+    "mongodb": "^6.13.0",
+    "prettier": "^3.5.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",

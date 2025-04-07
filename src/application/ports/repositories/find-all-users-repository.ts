@@ -1,5 +1,5 @@
 import { User } from '../../../domain/models/user';
 
-export interface IFindAllUsersRespository {
+export interface IFindAllUsersRepository {
   findAll(): Promise<User[]>;
 }

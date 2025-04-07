@@ -1,5 +1,12 @@
 import { User } from '../models/user';
 
+export interface FindAllUsersRequest {
+  orderBy?: string;
+  order?: 'desc' | 'asc';
+  limit?: number;
+  skip?: number;
+}
+
 export interface IFindAllUsersUseCase {
-  findAll(): Promise<User[]>;
+  findAll(request?: FindAllUsersRequest): Promise<User[]>;
 }

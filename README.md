@@ -16,13 +16,13 @@ This API project is being created using [Node.js](https://nodejs.org/en/), [Type
 - Factory
 - Dependency Injection
 
-## Todo
+## TODO
 
 - [x] Create CRUD operations for "user"
 
   - [x] CREATE
   - [ ] READ
-    - [ ] FIND ALL USERS
+    - [x] FIND ALL USERS
     - [ ] FIND USER BY ID
   - [ ] UPDATE
   - [ ] DELETE

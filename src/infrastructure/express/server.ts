@@ -1,6 +1,6 @@
-import express from "express";
-import { MongoClient } from "../database/mongo-client";
-import { setupRoutes } from "./setup/setup-routes";
+import express from 'express';
+import { MongoClient } from '../database/mongo-client';
+import { setupRoutes } from './setup/setup-routes';
 
 const app = async () => {
   await MongoClient.connect();

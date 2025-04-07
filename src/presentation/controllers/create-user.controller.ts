@@ -1,4 +1,4 @@
-import { RequestValidationError } from '../../application/error/request-validator-error';
+import { RequestValidationError } from '../../application/errors/request-validator-error';
 import { Controller } from '../../application/ports/controllers/controller';
 import { RequestModel } from '../../application/ports/requests/request-model';
 import { ResponseHandler } from '../../application/ports/responses/response-handler';

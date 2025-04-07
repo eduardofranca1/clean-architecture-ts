@@ -1,17 +1,17 @@
-import { MongoClient as Mongo, Db, Collection } from "mongodb";
+import { MongoClient as Mongo, Db, Collection, Document } from 'mongodb';
 
 export const MongoClient = {
   client: undefined as unknown as Mongo,
   db: undefined as unknown as Db,
 
   async connect(): Promise<void> {
-    const client = new Mongo("mongodb://localhost:27017");
-    const db = client.db("clean-ts");
+    const client = new Mongo('mongodb://localhost:27017');
+    const db = client.db('clean-ts');
 
     this.client = client;
     this.db = db;
 
-    console.log("connected to mongodb!");
+    console.log('connected to mongodb!');
   },
 
   async disconnect(): Promise<void> {
@@ -21,11 +21,11 @@ export const MongoClient = {
       this.client = undefined as unknown as Mongo;
       this.db = undefined as unknown as Db;
 
-      console.log("mongodb connection closed.");
+      console.log('mongodb connection closed.');
     }
   },
 
-  getCollection(name: string): Collection {
-    return this.client.db().collection(name);
+  getCollection<T extends Document>(name: string): Collection<T> {
+    return this.client.db().collection<T>(name);
   },
 };

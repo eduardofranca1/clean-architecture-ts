@@ -1,18 +1,19 @@
-import { CreateUserUseCase } from "../../../application/use-cases/create-user-use-case";
-import { CreateUserMongoRepository } from "../../../infrastructure/repositories/create-user-mongo.repository";
-import { CreateUserContoller } from "../../../presentation/controllers/create-user.controller";
-import { GenericCreatedResponse } from "../../../presentation/responses/generic-created-response";
+import { CreateUserUseCase } from '../../../application/use-cases/create-user-use-case';
+import { User } from '../../../domain/models/user';
+import { CreateUserMongoRepository } from '../../../infrastructure/repositories/create-user-mongo.repository';
+import { CreateUserContoller } from '../../../presentation/controllers/create-user.controller';
+import { GenericCreatedResponse } from '../../../presentation/responses/generic-created-response';
 
 export const createUserControllerFactory = () => {
   const createUserRepository = new CreateUserMongoRepository();
 
   const createUserUseCase = new CreateUserUseCase(createUserRepository);
 
-  const createdUserPresenter = new GenericCreatedResponse();
+  const createdUserPresenter = new GenericCreatedResponse<User>();
 
   const createUserController = new CreateUserContoller(
     createUserUseCase,
-    createdUserPresenter
+    createdUserPresenter,
   );
 
   return {

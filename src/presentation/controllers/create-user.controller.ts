@@ -12,7 +12,7 @@ type RequestBody = RequestModel<CreateUserParams>;
 export class CreateUserContoller implements Controller<User> {
   constructor(
     private readonly createUserUseCase: ICreateUserUseCase,
-    private readonly presenter: ResponseHandler,
+    private readonly presenter: ResponseHandler<User>,
   ) {}
 
   async handleRequest(requestModel: RequestBody) {

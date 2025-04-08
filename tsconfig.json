@@ -3,12 +3,16 @@
     "target": "es2020",
     "module": "commonjs",
     "strict": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
+    "outDir": "dist",
+    "rootDir": "./",
     "removeComments": true,
     "esModuleInterop": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"]
+    }
   },
-  "include": ["src"],
+  "include": ["src", "tests"],
   "exclude": []
 }

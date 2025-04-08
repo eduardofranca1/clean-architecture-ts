@@ -17,7 +17,7 @@ export class CreateUserContoller implements Controller<User> {
 
   async handleRequest(requestModel: RequestBody) {
     if (!objectKeyExists(requestModel, 'body')) {
-      throw new RequestValidationError('Missing body');
+      throw new RequestValidationError('The request body not found');
     }
 
     const { name, email } = requestModel.body;

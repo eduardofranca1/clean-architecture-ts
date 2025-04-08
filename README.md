@@ -13,8 +13,8 @@ This API project is being created using [Node.js](https://nodejs.org/en/), [Type
 ## Design Patterns
 
 - Adapter
-- Factory
 - Dependency Injection
+- Factory
 
 ## TODO
 
@@ -29,4 +29,4 @@ This API project is being created using [Node.js](https://nodejs.org/en/), [Type
 
 - [ ] Request data validation
 - [ ] Error handling
-- [ ] Create user sign-in with token
+- [ ] User sign-in with token

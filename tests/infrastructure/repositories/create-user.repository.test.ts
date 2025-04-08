@@ -1,7 +1,7 @@
 import { Collection } from 'mongodb';
-import { MongoClient } from '../../../src/infrastructure/database/mongo-client';
-import { CreateUserMongoRepository } from '../../../src/infrastructure/repositories/create-user-mongo.repository';
-import { createUserMock } from '../../domain/mocks/mock-user';
+import { MongoClient } from '@src/infrastructure/database/mongo-client';
+import { CreateUserMongoRepository } from '@src/infrastructure/repositories/create-user-mongo.repository';
+import { createUserMock } from '@tests/domain/mocks/mock-user';
 
 let userCollection: Collection;
 

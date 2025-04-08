@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ResponseHandler } from '../../../src/application/ports/responses/response-handler';
-import { ResponseModel } from '../../../src/application/ports/responses/response-model';
-import { CreateUserParams } from '../../../src/domain/models/create-user';
-import { User } from '../../../src/domain/models/user';
-import { ICreateUserUseCase } from '../../../src/domain/use-cases/create-user-use-case';
-import { CreateUserContoller } from '../../../src/presentation/controllers/create-user.controller';
+import { CreateUserContoller } from '@src/presentation/controllers/create-user.controller';
+import { ResponseHandler } from '@src/application/ports/responses/response-handler';
+import { ICreateUserUseCase } from '@src/domain/use-cases/create-user-use-case';
+import { CreateUserParams } from '@src/domain/models/create-user';
+import { User } from '@src/domain/models/user';
+import { ResponseModel } from '@src/application/ports/responses/response-model';
 
 const sutFactory = () => {
   const useCaseMock = useCaseMockFactory();

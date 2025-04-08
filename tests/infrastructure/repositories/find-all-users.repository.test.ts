@@ -1,6 +1,6 @@
 import { Collection } from 'mongodb';
-import { MongoClient } from '../../../src/infrastructure/database/mongo-client';
-import { FindAllUsersRepository } from '../../../src/infrastructure/repositories/find-all-user.repository';
+import { MongoClient } from '@src/infrastructure/database/mongo-client';
+import { FindAllUsersRepository } from '@src/infrastructure/repositories/find-all-user.repository';
 
 let userCollection: Collection;
 

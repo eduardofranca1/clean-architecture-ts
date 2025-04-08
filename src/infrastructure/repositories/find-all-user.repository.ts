@@ -1,5 +1,5 @@
 import { IFindAllUsersRepository } from '../../application/ports/repositories/find-all-users-repository';
-import { User } from '../../domain/models/user';
+import { User } from '@/domain/models/user';
 import { MongoClient } from '../database/mongo-client';
 
 export class FindAllUsersRepository implements IFindAllUsersRepository {

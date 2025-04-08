@@ -1,6 +1,6 @@
-import { IFindAllUsersRepository } from '../../../src/application/ports/repositories/find-all-users-repository';
-import { FindAllUsersUseCase } from '../../../src/application/use-cases/find-all-users-use-case';
-import { User } from '../../../src/domain/models/user';
+import { IFindAllUsersRepository } from '@src/application/ports/repositories/find-all-users-repository';
+import { FindAllUsersUseCase } from '@src/application/use-cases/find-all-users-use-case';
+import { User } from '@src/domain/models/user';
 
 const sutFactory = () => {
   const findAllUsersRepositoryMock = findAllUsersRepositoryMockFactory();

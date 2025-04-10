@@ -1,3 +1,4 @@
+import { ValidationComposite } from '@/application/ports/validation/validation-composite';
 import { ICreateUserRepository } from '@src/application/ports/repositories/create-user-repository';
 import { CreateUserUseCase } from '@src/application/use-cases/create-user-use-case';
 import { CreateUserParams } from '@src/domain/models/create-user';
@@ -26,10 +27,18 @@ const createUserRepositoryMockFactory = (): ICreateUserRepository => {
   return new CreateUserRepositoryMock();
 };
 
+const validateMockFactory = () => {
+  class ValidationMock extends ValidationComposite {
+    async validate(_request: CreateUserParams): Promise<void> | never {}
+  }
+  return new ValidationMock();
+};
+
 const sutFactory = () => {
   const userRequestMock = createUserMock();
   const createUserRepositoryMock = createUserRepositoryMockFactory();
-  const sut = new CreateUserUseCase(createUserRepositoryMock);
+  const validationMock = validateMockFactory();
+  const sut = new CreateUserUseCase(createUserRepositoryMock, validationMock);
 
   return {
     userRequestMock,

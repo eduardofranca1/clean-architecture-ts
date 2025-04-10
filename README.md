@@ -13,8 +13,9 @@ This API project is being created using [Node.js](https://nodejs.org/en/), [Type
 ## Design Patterns
 
 - Adapter
+- Composite
 - Dependency Injection
-- Factory
+- Factory Method
 
 ## TODO
 

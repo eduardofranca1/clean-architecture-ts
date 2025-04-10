@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { createUserControllerFactory } from '../../../main/factories/controller/create-user.controller';
+import { createUserControllerFactory } from '@/main/factories/controller/create-user.controller';
+import { findAllUsersControllerFactory } from '@/main/factories/controller/find-all-users.controller';
 import { expressRouteAdapter } from '../adapters/express.route.adapter';
-import { findAllUsersControllerFactory } from '../../../main/factories/controller/find-all-users.controller';
 
 export const userRoutes = Router();
 

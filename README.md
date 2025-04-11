@@ -43,6 +43,6 @@ This API project is being created using [Node.js](https://nodejs.org/en/), [Type
   - [ ] UPDATE
   - [ ] DELETE
 
-- [ ] Request data validation
+- [x] Request data validation
 - [ ] Error handling
 - [ ] User sign-in with token

@@ -37,7 +37,12 @@ const findAllUsersRepositoryMockFactory = () => {
 describe('Find_All_Users_Use_Case', () => {
   test('it should return a user list', async () => {
     const sut = sutFactory();
-    const userList = await sut.findAll();
+    const userList = await sut.findAll({
+      orderBy: 'name',
+      order: 'asc',
+      limit: 100,
+      skip: 0,
+    });
     expect(userList.length).toBeGreaterThan(0);
   });
 });

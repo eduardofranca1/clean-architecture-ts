@@ -5,7 +5,7 @@ export const MongoClient = {
   db: undefined as unknown as Db,
 
   async connect(): Promise<void> {
-    const client = new Mongo('mongodb://localhost:27017');
+    const client = new Mongo('mongodb://127.0.0.1:27017');
     const db = client.db('clean-ts');
 
     this.client = client;

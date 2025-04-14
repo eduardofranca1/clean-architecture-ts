@@ -34,6 +34,6 @@ describe('User_Required_Fields_Validation', () => {
       error = err;
     }
 
-    expect(error.message).toEqual('Name is required');
+    expect(error.message).toBe('Name is required');
   });
 });

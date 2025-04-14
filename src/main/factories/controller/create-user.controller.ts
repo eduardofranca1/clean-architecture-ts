@@ -10,12 +10,12 @@ export const createUserControllerFactory = () => {
   const createUserRepository = new CreateUserMongoRepository();
   const findUserByIdRepository = new FindUserByEmailRepository();
 
-  const createUserValition = new CreateUserValidation();
+  const createUserValidation = new CreateUserValidation();
 
   const createUserUseCase = new CreateUserUseCase(
     createUserRepository,
     findUserByIdRepository,
-    createUserValition,
+    createUserValidation,
   );
 
   const createdUserPresenter = new GenericCreatedResponse<User>();
@@ -30,6 +30,6 @@ export const createUserControllerFactory = () => {
     createUserUseCase,
     createdUserPresenter,
     createUserController,
-    createUserValition,
+    createUserValidation,
   };
 };

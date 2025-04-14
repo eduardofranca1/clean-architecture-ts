@@ -6,7 +6,7 @@ import { CreateUserUseCase } from '@src/application/use-cases/create-user-use-ca
 import { CreateUserParams } from '@src/domain/models/create-user';
 import { User } from '@src/domain/models/user';
 import {
-  userRequestFactory,
+  createUserRequestFactory,
   userResponseFactory,
 } from '@tests/domain/mocks/mock-user';
 
@@ -42,7 +42,7 @@ const validateMockFactory = () => {
 };
 
 const sutFactory = () => {
-  const userRequestMock = userRequestFactory();
+  const userRequestMock = createUserRequestFactory();
   const createUserRepositoryMock = createUserRepositoryMockFactory();
   const findUserByEmailRepositoryMock = findUserByEmailRepositoryMockFactory();
   const validationMock = validateMockFactory();
@@ -95,7 +95,7 @@ describe('Create_Use_Use_Case', () => {
       .mockResolvedValue(userResponseFactory());
 
     return sut.create(userRequestMock.body).catch((error) => {
-      return expect(error).toEqual(new UserExistsError('User already created'));
+      return expect(error).toEqual(new UserExistsError('User already exists'));
     });
   });
 });

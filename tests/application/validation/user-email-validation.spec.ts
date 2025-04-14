@@ -11,7 +11,6 @@ const sutFactory = () => {
 
 const requestDataFactory = () => {
   return {
-    id: '1',
     name: 'name',
     email: 'test@email.com',
   };
@@ -55,6 +54,8 @@ describe('User_Email_Validation', () => {
       error = err;
     }
 
-    expect(error.message).toEqual('Invalid e-mail');
+    expect(error.statusCode).toBe(400);
+    expect(error.message).toBe('Invalid e-mail');
+    expect(error.name).toBe('EmailValidationError');
   });
 });

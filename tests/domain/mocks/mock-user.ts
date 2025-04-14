@@ -13,7 +13,7 @@ export const userResponseFactory = () => {
   };
 };
 
-export const userRequestFactory = () => {
+export const createUserRequestFactory = () => {
   return {
     body: {
       name: 'first_name',

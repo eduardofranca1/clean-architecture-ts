@@ -4,10 +4,12 @@ import {
   IFindAllUsersUseCase,
 } from '../../domain/use-cases/find-all-users-use-case';
 import { IFindAllUsersRepository } from '../ports/repositories/find-all-users-repository';
+import { ValidationComposite } from '../ports/validation/validation-composite';
 
 export class FindAllUsersUseCase implements IFindAllUsersUseCase {
   constructor(
     private readonly findAllUsersRepository: IFindAllUsersRepository,
+    private readonly validator: ValidationComposite<FindAllUsersRequest>,
   ) {}
 
   async findAll(request?: FindAllUsersRequest): Promise<User[]> {
@@ -22,6 +24,8 @@ export class FindAllUsersUseCase implements IFindAllUsersUseCase {
       if (request.limit) limit = request.limit;
       if (request.skip) skip = request.skip;
     }
+
+    await this.validator.validate({ orderBy, order, limit, skip });
 
     return await this.findAllUsersRepository.findAll(
       orderBy,

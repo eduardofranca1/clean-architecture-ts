@@ -1,11 +1,24 @@
+import { ValidationComposite } from '@/application/ports/validation/validation-composite';
+import { FindAllUsersRequest } from '@/domain/use-cases/find-all-users-use-case';
 import { IFindAllUsersRepository } from '@src/application/ports/repositories/find-all-users-repository';
 import { FindAllUsersUseCase } from '@src/application/use-cases/find-all-users-use-case';
 import { User } from '@src/domain/models/user';
 
 const sutFactory = () => {
   const findAllUsersRepositoryMock = findAllUsersRepositoryMockFactory();
-  const sut = new FindAllUsersUseCase(findAllUsersRepositoryMock);
+  const validationMock = validateMockFactory();
+  const sut = new FindAllUsersUseCase(
+    findAllUsersRepositoryMock,
+    validationMock,
+  );
   return sut;
+};
+
+const validateMockFactory = () => {
+  class ValidationMock extends ValidationComposite {
+    async validate(_request: FindAllUsersRequest): Promise<void> | never {}
+  }
+  return new ValidationMock();
 };
 
 const findAllUsersRepositoryMockFactory = () => {

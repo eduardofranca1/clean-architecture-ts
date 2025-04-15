@@ -40,13 +40,13 @@ describe('Find_User_By_Id_Use_Case', () => {
 
   it('should call findUserByIdRepository with the correct values', async () => {
     const { sut, findUserByIdRepositoryMock } = sutFactory();
-    const findUserByIdRepositoryMockSpy = jest.spyOn(
+    const findUserByIdRepositorySpy = jest.spyOn(
       findUserByIdRepositoryMock,
       'findById',
     );
     await sut.findById('1');
-    expect(findUserByIdRepositoryMockSpy).toHaveBeenCalledTimes(1);
-    expect(findUserByIdRepositoryMockSpy).toHaveBeenCalledWith('1');
+    expect(findUserByIdRepositorySpy).toHaveBeenCalledTimes(1);
+    expect(findUserByIdRepositorySpy).toHaveBeenCalledWith('1');
   });
 
   it('should throw an exception if the user is not found', async () => {

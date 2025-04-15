@@ -5,7 +5,7 @@ import { MongoClient } from '../database/mongo-client';
 export class FindAllUsersRepository implements IFindAllUsersRepository {
   async findAll(
     orderBy: string,
-    order: 'desc' | 'asc',
+    order: 'asc' | 'desc',
     limit: number,
     skip: number,
   ): Promise<User[]> {

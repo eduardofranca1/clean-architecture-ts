@@ -63,27 +63,20 @@ const sutFactory = () => {
 describe('Create_Use_Use_Case', () => {
   it('should create a new user and return the user created', async () => {
     const { sut, userRequestMock } = sutFactory();
-
     const result = await sut.create(userRequestMock.body);
     const expectedUser = userResponseFactory();
-
     expect(result).toEqual(expectedUser);
   });
 
   it('should call user repository with the correct values', async () => {
     const { sut, userRequestMock, createUserRepositoryMock } = sutFactory();
-
-    const createUserRepositoryMockSpy = jest.spyOn(
+    const createUserRepositorySpy = jest.spyOn(
       createUserRepositoryMock,
       'create',
     );
-
     await sut.create(userRequestMock.body);
-
-    expect(createUserRepositoryMockSpy).toHaveBeenCalledTimes(1);
-    expect(createUserRepositoryMockSpy).toHaveBeenCalledWith(
-      userRequestMock.body,
-    );
+    expect(createUserRepositorySpy).toHaveBeenCalledTimes(1);
+    expect(createUserRepositorySpy).toHaveBeenCalledWith(userRequestMock.body);
   });
 
   it('should throw an exception if user already exist', async () => {

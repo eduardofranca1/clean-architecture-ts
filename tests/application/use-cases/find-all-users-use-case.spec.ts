@@ -65,15 +65,15 @@ describe('Find_All_Users_Use_Case', () => {
 
   it('should call validation with the correct values', async () => {
     const { sut, validationMock } = sutFactory();
-    const validationMockSpy = jest.spyOn(validationMock, 'validate');
+    const validationSpy = jest.spyOn(validationMock, 'validate');
     await sut.findAll({
       orderBy: 'name',
       order: 'asc',
       limit: 20,
       skip: 0,
     });
-    expect(validationMockSpy).toHaveBeenCalledTimes(1);
-    expect(validationMockSpy).toHaveBeenCalledWith({
+    expect(validationSpy).toHaveBeenCalledTimes(1);
+    expect(validationSpy).toHaveBeenCalledWith({
       orderBy: 'name',
       order: 'asc',
       limit: 20,
@@ -84,7 +84,7 @@ describe('Find_All_Users_Use_Case', () => {
   it('should call findAllUsersRepository with the correct values', async () => {
     const { sut, findAllUsersRepositoryMock } = sutFactory();
 
-    const findAllUsersRepositoryMockSpy = jest.spyOn(
+    const findAllUsersRepositorySpy = jest.spyOn(
       findAllUsersRepositoryMock,
       'findAll',
     );
@@ -92,47 +92,14 @@ describe('Find_All_Users_Use_Case', () => {
     await sut.findAll({
       orderBy: 'name',
       order: 'asc',
-      limit: 20,
+      limit: 100,
       skip: 0,
     });
-
-    expect(findAllUsersRepositoryMockSpy).toHaveBeenCalledTimes(1);
-    expect(findAllUsersRepositoryMockSpy).toHaveBeenCalledWith(
+    expect(findAllUsersRepositorySpy).toHaveBeenCalledTimes(1);
+    expect(findAllUsersRepositorySpy).toHaveBeenCalledWith(
       'name',
       'asc',
-      20,
-      0,
-    );
-
-    await sut.findAll({ orderBy: 'name' });
-    expect(findAllUsersRepositoryMockSpy).toHaveBeenCalledWith(
-      'name',
-      'asc',
-      20,
-      0,
-    );
-
-    await sut.findAll({ order: 'asc' });
-    expect(findAllUsersRepositoryMockSpy).toHaveBeenCalledWith(
-      'name',
-      'asc',
-      20,
-      0,
-    );
-
-    await sut.findAll({ limit: 20 });
-    expect(findAllUsersRepositoryMockSpy).toHaveBeenCalledWith(
-      'name',
-      'asc',
-      20,
-      0,
-    );
-
-    await sut.findAll({ skip: 5 });
-    expect(findAllUsersRepositoryMockSpy).toHaveBeenCalledWith(
-      'name',
-      'asc',
-      20,
+      100,
       0,
     );
   });

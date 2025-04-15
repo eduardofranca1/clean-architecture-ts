@@ -75,12 +75,35 @@ const presenterMockFactory = () => {
 };
 
 describe('Find_All_Users_Controller', () => {
-  it('should return 200 status code the response', async () => {
+  it('should return 200 status code and the response', async () => {
     const { sut } = sutFactory();
     const response = await sut.handleRequest();
     expect(response).toEqual({
       statusCode: 200,
       body: userDataMockFactory(),
     });
+  });
+
+  it('should call the use case with the correct values', async () => {
+    const { sut, useCaseMock } = sutFactory();
+    const useCaseSpy = jest.spyOn(useCaseMock, 'findAll');
+    await sut.handleRequest({
+      query: { orderBy: 'name', order: 'asc', limit: 20, skip: 0 },
+    });
+    expect(useCaseSpy).toHaveBeenCalledTimes(1);
+    expect(useCaseSpy).toHaveBeenCalledWith({
+      orderBy: 'name',
+      order: 'asc',
+      limit: 20,
+      skip: 0,
+    });
+  });
+
+  it('should call presenter with the use case result', async () => {
+    const { sut, presenterMock } = sutFactory();
+    const presenterSpy = jest.spyOn(presenterMock, 'response');
+    await sut.handleRequest();
+    expect(presenterSpy).toHaveBeenCalledTimes(1);
+    expect(presenterSpy).toHaveBeenCalledWith(userDataMockFactory());
   });
 });

@@ -9,6 +9,7 @@ type FindAllUsersRequestModel = RequestModel<
   void,
   void,
   {
+    orderBy?: string;
     order?: 'asc' | 'desc';
     limit?: number;
     skip?: number;

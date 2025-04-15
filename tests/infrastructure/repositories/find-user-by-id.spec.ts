@@ -1,14 +1,14 @@
-import { Collection } from 'mongodb';
 import { MongoClient } from '@/infrastructure/database/mongo-client';
-import { FindUserByEmailRepository } from '@/infrastructure/repositories/find-user-by-email.repository';
+import { FindUserByIdRepository } from '@/infrastructure/repositories/find-user-by-id.repository';
+import { Collection } from 'mongodb';
 
 let userCollection: Collection;
 
-const makeSut = (): FindUserByEmailRepository => {
-  return new FindUserByEmailRepository();
+const makeSut = (): FindUserByIdRepository => {
+  return new FindUserByIdRepository();
 };
 
-describe('Find_User_By_Email_Repository', () => {
+describe('Find_User_By_ID_Repository', () => {
   beforeAll(async () => {
     await MongoClient.connect();
   });
@@ -22,20 +22,19 @@ describe('Find_User_By_Email_Repository', () => {
     await userCollection.deleteMany();
   });
 
-  it('should return a user by e-mail', async () => {
-    await userCollection.insertOne({
-      name: 'Curry',
-      email: 'curry@email.com',
+  it('should return a user by id', async () => {
+    const { insertedId } = await userCollection.insertOne({
+      name: 'first_name',
+      email: 'mock@email.com',
     });
-
     const sut = makeSut();
-    const result = await sut.findByEmail('curry@email.com');
+    const result = await sut.findById(insertedId.toHexString());
     expect(result).toBeTruthy();
   });
 
   it('should return null if user does not exist', async () => {
     const sut = makeSut();
-    const result = await sut.findByEmail('name@email.com');
+    const result = await sut.findById('67fe6afe022d4a7558fb1349');
     expect(result).toBeFalsy();
   });
 });

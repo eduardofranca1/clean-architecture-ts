@@ -50,7 +50,6 @@ const requestDataMockFactory = () => {
   const response = responseDataMockFactory();
   return {
     body: {
-      id: response.id,
       name: response.name,
       email: response.email,
     },
@@ -88,5 +87,13 @@ describe('Create_User_Controller', () => {
     expect(error.name).toBe('RequestValidationError');
     expect(error.message).toBe('The request body not found');
     expect(error.statusCode).toBe(400);
+  });
+
+  it('shoull call use case with the correct values', async () => {
+    const { sut, useCaseMock } = sutFactory();
+    const useCaseSpy = jest.spyOn(useCaseMock, 'create');
+    await sut.handleRequest(requestDataMockFactory());
+    expect(useCaseSpy).toHaveBeenCalledTimes(1);
+    expect(useCaseSpy).toHaveBeenCalledWith(requestDataMockFactory().body);
   });
 });

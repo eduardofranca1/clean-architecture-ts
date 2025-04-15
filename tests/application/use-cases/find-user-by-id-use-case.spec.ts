@@ -1,13 +1,19 @@
 import { NotFoundError } from '@/application/errors/not-found-error';
 import { IFindUserByIdRepository } from '@/application/ports/repositories/find-user-by-id.repository';
+import { ValidationComposite } from '@/application/ports/validation/validation-composite';
 import { FindUserByIdUseCase } from '@/application/use-cases/find-user-by-id-use-case';
 import { User } from '@/domain/models/user';
 
 const sutFactory = () => {
   const findUserByIdRepositoryMock = findUserByIdRepositoryMockFactory();
-  const sut = new FindUserByIdUseCase(findUserByIdRepositoryMock);
+  const validationMock = validateMockFactory();
+  const sut = new FindUserByIdUseCase(
+    findUserByIdRepositoryMock,
+    validationMock,
+  );
   return {
     findUserByIdRepositoryMock,
+    validationMock,
     sut,
   };
 };
@@ -19,6 +25,13 @@ const findUserByIdRepositoryMockFactory = () => {
     }
   }
   return new FindUserByIdRepository();
+};
+
+const validateMockFactory = () => {
+  class ValidationMock extends ValidationComposite {
+    async validate(_id: unknown): Promise<void> | never {}
+  }
+  return new ValidationMock();
 };
 
 const userMockFactory = () => {
@@ -55,5 +68,13 @@ describe('Find_User_By_Id_Use_Case', () => {
     return sut.findById('2').catch((error) => {
       return expect(error).toEqual(new NotFoundError('User not found'));
     });
+  });
+
+  it('should call validation with the correct values', async () => {
+    const { sut, validationMock } = sutFactory();
+    const validationSpy = jest.spyOn(validationMock, 'validate');
+    await sut.findById('1');
+    expect(validationSpy).toHaveBeenCalledTimes(1);
+    expect(validationSpy).toHaveBeenCalledWith('1');
   });
 });

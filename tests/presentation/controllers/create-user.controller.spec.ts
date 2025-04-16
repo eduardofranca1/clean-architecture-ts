@@ -74,7 +74,7 @@ describe('Create_User_Controller', () => {
     expect(presenterSpy).toHaveBeenCalledWith(responseDataMockFactory());
   });
 
-  it('should throw error if request.body does not exists', async () => {
+  it('should throw error if request.body does not exist', async () => {
     const { sut } = sutFactory();
     let error: any;
 

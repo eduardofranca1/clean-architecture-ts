@@ -1,6 +1,7 @@
 import { Collection } from 'mongodb';
 import { MongoClient } from '@src/infrastructure/database/mongo-client';
 import { FindAllUsersRepository } from '@src/infrastructure/repositories/find-all-user.repository';
+import env from '@/main/config/env';
 
 let userCollection: Collection;
 
@@ -10,7 +11,7 @@ const makeSut = (): FindAllUsersRepository => {
 
 describe('Find_All_Users_Repository', () => {
   beforeAll(async () => {
-    await MongoClient.connect();
+    await MongoClient.connect(env.mongoTestsUrl);
   });
 
   afterAll(async () => {

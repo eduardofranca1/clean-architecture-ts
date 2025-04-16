@@ -1,6 +1,7 @@
 import { Collection } from 'mongodb';
 import { MongoClient } from '@/infrastructure/database/mongo-client';
 import { FindUserByEmailRepository } from '@/infrastructure/repositories/find-user-by-email.repository';
+import env from '@/main/config/env';
 
 let userCollection: Collection;
 
@@ -10,7 +11,7 @@ const makeSut = (): FindUserByEmailRepository => {
 
 describe('Find_User_By_Email_Repository', () => {
   beforeAll(async () => {
-    await MongoClient.connect();
+    await MongoClient.connect(env.mongoTestsUrl);
   });
 
   afterAll(async () => {

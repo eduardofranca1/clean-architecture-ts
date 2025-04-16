@@ -2,6 +2,7 @@ import { Collection } from 'mongodb';
 import { MongoClient } from '@src/infrastructure/database/mongo-client';
 import { CreateUserMongoRepository } from '@src/infrastructure/repositories/create-user-mongo.repository';
 import { createUserMock } from '@tests/domain/mocks/mock-user';
+import env from '@/main/config/env';
 
 let userCollection: Collection;
 
@@ -11,7 +12,7 @@ const makeSut = (): CreateUserMongoRepository => {
 
 describe('Create_User_Repository', () => {
   beforeAll(async () => {
-    await MongoClient.connect();
+    await MongoClient.connect(env.mongoTestsUrl);
   });
 
   afterAll(async () => {

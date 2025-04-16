@@ -1,5 +1,6 @@
 import { MongoClient } from '@/infrastructure/database/mongo-client';
 import { FindUserByIdRepository } from '@/infrastructure/repositories/find-user-by-id.repository';
+import env from '@/main/config/env';
 import { Collection } from 'mongodb';
 
 let userCollection: Collection;
@@ -10,7 +11,7 @@ const makeSut = (): FindUserByIdRepository => {
 
 describe('Find_User_By_ID_Repository', () => {
   beforeAll(async () => {
-    await MongoClient.connect();
+    await MongoClient.connect(env.mongoTestsUrl);
   });
 
   afterAll(async () => {

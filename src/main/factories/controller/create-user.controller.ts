@@ -9,22 +9,17 @@ import { FindUserByEmailRepository } from '@/infrastructure/repositories/find-us
 export const createUserControllerFactory = () => {
   const createUserRepository = new CreateUserMongoRepository();
   const findUserByIdRepository = new FindUserByEmailRepository();
-
   const createUserValidation = new CreateUserValidation();
-
   const createUserUseCase = new CreateUserUseCase(
     createUserRepository,
     findUserByIdRepository,
     createUserValidation,
   );
-
   const createdUserPresenter = new GenericCreatedResponse<User>();
-
   const createUserController = new CreateUserContoller(
     createUserUseCase,
     createdUserPresenter,
   );
-
   return {
     createUserRepository,
     createUserUseCase,

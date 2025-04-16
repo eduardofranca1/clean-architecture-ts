@@ -12,14 +12,11 @@ export const findAllUsersControllerFactory = () => {
     findAllUsersRepository,
     findAllUsersValidation,
   );
-
   const genericSuccessPresenter = new GenericSuccessResponse<User[]>();
-
   const findAllUsersController = new FindAllUsersController(
     findAllUsersUseCase,
     genericSuccessPresenter,
   );
-
   return {
     findAllUsersController,
   };

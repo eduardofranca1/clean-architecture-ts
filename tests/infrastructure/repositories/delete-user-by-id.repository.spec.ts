@@ -26,7 +26,6 @@ describe('Delete_User_By_Id_Repository', () => {
       email: 'mock@email.com',
     });
 
-    const result = await sut.deleteById(insertedId.toHexString());
-    expect(result).toBeUndefined();
+    expect(await sut.deleteById(insertedId.toHexString())).toBeUndefined();
   });
 });

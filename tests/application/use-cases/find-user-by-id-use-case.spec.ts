@@ -6,7 +6,7 @@ import { User } from '@/domain/models/user';
 
 const sutFactory = () => {
   const findUserByIdRepositoryMock = findUserByIdRepositoryMockFactory();
-  const validationMock = validateMockFactory();
+  const validationMock = validationMockFatory();
   const sut = new FindUserByIdUseCase(
     findUserByIdRepositoryMock,
     validationMock,
@@ -27,7 +27,7 @@ const findUserByIdRepositoryMockFactory = () => {
   return new FindUserByIdRepository();
 };
 
-const validateMockFactory = () => {
+const validationMockFatory = () => {
   class ValidationMock extends ValidationComposite {
     async validate(_id: unknown): Promise<void> | never {}
   }

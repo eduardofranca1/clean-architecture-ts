@@ -37,9 +37,9 @@ This API project is being created using [Node.js](https://nodejs.org/en/), [Type
 - [x] Create CRUD operations for "user"
 
   - [x] CREATE
-  - [ ] READ
+  - [x] READ
     - [x] FIND ALL USERS
-    - [ ] FIND USER BY ID
+    - [x] FIND USER BY ID
   - [ ] UPDATE
   - [ ] DELETE
 

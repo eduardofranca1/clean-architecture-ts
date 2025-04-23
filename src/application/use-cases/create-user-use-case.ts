@@ -1,4 +1,4 @@
-import { ICreateUserUseCase } from '@/domain/use-cases/create-user-use-case';
+import { CreateUserUseCase } from '@/domain/use-cases/create-user-use-case';
 import { CreateUserRepository } from '../protocols/repositories/create-user-repository';
 import { CreateUserParams } from '@/domain/models/create-user';
 import { ValidationComposite } from '../protocols/validation/validation-composite';
@@ -6,7 +6,7 @@ import { User } from '@/domain/models/user';
 import { FindUserByEmailRepository } from '../protocols/repositories/find-user-by-email.repository';
 import { UserExistsError } from '../errors/user-exists-error';
 
-export class CreateUserUseCase implements ICreateUserUseCase {
+export class CreateUser implements CreateUserUseCase {
   constructor(
     private readonly createUserRepository: CreateUserRepository,
     private readonly findUserByEmailRepository: FindUserByEmailRepository,

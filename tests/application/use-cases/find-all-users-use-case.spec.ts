@@ -1,16 +1,13 @@
 import { ValidationComposite } from '@src/application/protocols/validation/validation-composite';
 import { FindAllUsersRequest } from '@src/domain/use-cases/find-all-users-use-case';
 import { FindAllUsersRepository } from '@src/application/protocols/repositories/find-all-users-repository';
-import { FindAllUsersUseCase } from '@src/application/use-cases/find-all-users-use-case';
+import { FindAllUsers } from '@src/application/use-cases/find-all-users-use-case';
 import { User } from '@src/domain/models/user';
 
 const sutFactory = () => {
   const findAllUsersRepositoryMock = findAllUsersRepositoryMockFactory();
   const validationMock = validateMockFactory();
-  const sut = new FindAllUsersUseCase(
-    findAllUsersRepositoryMock,
-    validationMock,
-  );
+  const sut = new FindAllUsers(findAllUsersRepositoryMock, validationMock);
   return {
     findAllUsersRepositoryMock,
     validationMock,
@@ -84,10 +81,7 @@ describe('Find_All_Users_Use_Case', () => {
   it('should call findAllUsersRepository with the correct values', async () => {
     const { sut, findAllUsersRepositoryMock } = sutFactory();
 
-    const findAllUsersRepositorySpy = jest.spyOn(
-      findAllUsersRepositoryMock,
-      'findAll',
-    );
+    const findAllUsersRepositorySpy = jest.spyOn(findAllUsersRepositoryMock, 'findAll');
 
     await sut.findAll({
       orderBy: 'name',
@@ -96,11 +90,6 @@ describe('Find_All_Users_Use_Case', () => {
       skip: 0,
     });
     expect(findAllUsersRepositorySpy).toHaveBeenCalledTimes(1);
-    expect(findAllUsersRepositorySpy).toHaveBeenCalledWith(
-      'name',
-      'asc',
-      100,
-      0,
-    );
+    expect(findAllUsersRepositorySpy).toHaveBeenCalledWith('name', 'asc', 100, 0);
   });
 });

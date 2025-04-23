@@ -1,10 +1,10 @@
-import { IDeleteUserByIdUseCase } from '@/domain/use-cases/delete-user-by-id-use-case';
+import { DeleteUserByIdUseCase } from '@/domain/use-cases/delete-user-by-id-use-case';
 import { DeleteUserByIdRepository } from '../protocols/repositories/delete-user-by-id.repository';
 import { FindUserByIdRepository } from '../protocols/repositories/find-user-by-id.repository';
 import { NotFoundError } from '../errors/not-found-error';
 import { ValidationComposite } from '../protocols/validation/validation-composite';
 
-export class DeleteUserByIdUseCase implements IDeleteUserByIdUseCase {
+export class DeleteUserById implements DeleteUserByIdUseCase {
   constructor(
     private readonly deleteUserByIdRepository: DeleteUserByIdRepository,
     private readonly findUserByIdRepository: FindUserByIdRepository,

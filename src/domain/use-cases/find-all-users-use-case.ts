@@ -7,6 +7,6 @@ export interface FindAllUsersRequest {
   skip?: number;
 }
 
-export interface IFindAllUsersUseCase {
+export interface FindAllUsersUseCase {
   findAll(request?: FindAllUsersRequest): Promise<User[]>;
 }

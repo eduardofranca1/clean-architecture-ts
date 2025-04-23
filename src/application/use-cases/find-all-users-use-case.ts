@@ -1,9 +1,9 @@
 import { User } from '../../domain/models/user';
-import { FindAllUsersRequest, IFindAllUsersUseCase } from '../../domain/use-cases/find-all-users-use-case';
+import { FindAllUsersRequest, FindAllUsersUseCase } from '../../domain/use-cases/find-all-users-use-case';
 import { FindAllUsersRepository } from '../protocols/repositories/find-all-users-repository';
 import { ValidationComposite } from '../protocols/validation/validation-composite';
 
-export class FindAllUsersUseCase implements IFindAllUsersUseCase {
+export class FindAllUsers implements FindAllUsersUseCase {
   constructor(
     private readonly findAllUsersRepository: FindAllUsersRepository,
     private readonly validator: ValidationComposite<FindAllUsersRequest>,

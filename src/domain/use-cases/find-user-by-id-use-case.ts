@@ -1,5 +1,5 @@
 import { User } from '../models/user';
 
-export interface IFindUserByIdUseCase {
+export interface FindUserByIdUseCase {
   findById(id: string): Promise<User>;
 }

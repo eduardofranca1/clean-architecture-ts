@@ -2,7 +2,7 @@ import { UserExistsError } from '@/application/errors/user-exists-error';
 import { FindUserByEmailRepository } from '@src/application/protocols/repositories/find-user-by-email.repository';
 import { ValidationComposite } from '@src/application/protocols/validation/validation-composite';
 import { CreateUserRepository } from '@src/application/protocols/repositories/create-user-repository';
-import { CreateUserUseCase } from '@src/application/use-cases/create-user-use-case';
+import { CreateUser } from '@src/application/use-cases/create-user-use-case';
 import { CreateUserParams } from '@src/domain/models/create-user';
 import { User } from '@src/domain/models/user';
 import { createUserRequestFactory, userResponseFactory } from '@tests/domain/mocks/mock-user';
@@ -43,7 +43,7 @@ const sutFactory = () => {
   const createUserRepositoryMock = createUserRepositoryMockFactory();
   const findUserByEmailRepositoryMock = findUserByEmailRepositoryMockFactory();
   const validationMock = validateMockFactory();
-  const sut = new CreateUserUseCase(createUserRepositoryMock, findUserByEmailRepositoryMock, validationMock);
+  const sut = new CreateUser(createUserRepositoryMock, findUserByEmailRepositoryMock, validationMock);
 
   return {
     userRequestMock,

@@ -1,14 +1,14 @@
 import { DeleteUserByIdRepository } from '@src/application/protocols/repositories/delete-user-by-id.repository';
 import { FindUserByIdRepository } from '@src/application/protocols/repositories/find-user-by-id.repository';
 import { ValidationComposite } from '@src/application/protocols/validation/validation-composite';
-import { DeleteUserByIdUseCase } from '@src/application/use-cases/delete-user-by-id-use-case';
+import { DeleteUserById } from '@src/application/use-cases/delete-user-by-id-use-case';
 import { User } from '@/domain/models/user';
 
 const sutFactory = () => {
   const deleteUserByIdRepositoryMock = deleteUserByIdRepositoryMockFactory();
   const findUserByIdRepositoryMock = findUserByIdRepositoryMockFactory();
   const validationMock = validationMockFatory();
-  const sut = new DeleteUserByIdUseCase(deleteUserByIdRepositoryMock, findUserByIdRepositoryMock, validationMock);
+  const sut = new DeleteUserById(deleteUserByIdRepositoryMock, findUserByIdRepositoryMock, validationMock);
   return {
     deleteUserByIdRepositoryMock,
     findUserByIdRepositoryMock,

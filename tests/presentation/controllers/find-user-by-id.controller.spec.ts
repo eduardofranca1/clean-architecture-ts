@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { User } from '@/domain/models/user';
-import { IFindUserByIdUseCase } from '@/domain/use-cases/find-user-by-id-use-case';
+import { FindUserByIdUseCase } from '@/domain/use-cases/find-user-by-id-use-case';
 import { FindUserByIdController } from '@/presentation/controllers/find-user-by-id.controller';
 import { ResponseHandler } from '@/presentation/protocols/responses/response-handler';
 import { ResponseModel } from '@/presentation/protocols/responses/response-model';
@@ -29,7 +29,7 @@ const presenterMockFactory = () => {
 };
 
 const useCaseMockFactory = () => {
-  class UseCase implements IFindUserByIdUseCase {
+  class UseCase implements FindUserByIdUseCase {
     async findById(_id: string): Promise<User> {
       return userDataMockFactory();
     }

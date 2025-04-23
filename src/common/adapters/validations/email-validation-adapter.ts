@@ -1,7 +1,7 @@
 import validator from 'validator';
-import { IEmailValidator } from '@/application/protocols/validation/email-validator';
+import { EmailValidator } from '@/application/protocols/validation/email-validator';
 
-export class EmailValidationAdapter implements IEmailValidator {
+export class EmailValidationAdapter implements EmailValidator {
   async isEmail(email: string): Promise<boolean> {
     return validator.isEmail(email);
   }

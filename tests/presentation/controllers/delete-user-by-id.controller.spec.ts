@@ -1,4 +1,4 @@
-import { IDeleteUserByIdUseCase } from '@/domain/use-cases/delete-user-by-id-use-case';
+import { DeleteUserByIdUseCase } from '@/domain/use-cases/delete-user-by-id-use-case';
 import { DeleteUserByIdController } from '@/presentation/controllers/delete-user-by-id.controller';
 import { ResponseHandler } from '@/presentation/protocols/responses/response-handler';
 import { ResponseModel } from '@/presentation/protocols/responses/response-model';
@@ -15,10 +15,10 @@ const sutFactory = () => {
 };
 
 const useCaseMockFactory = () => {
-  class DeleteUserByIdUseCase implements IDeleteUserByIdUseCase {
+  class DeleteUserById implements DeleteUserByIdUseCase {
     async deleteById(_id: string): Promise<void> {}
   }
-  return new DeleteUserByIdUseCase();
+  return new DeleteUserById();
 };
 
 const presenterMockFactory = () => {

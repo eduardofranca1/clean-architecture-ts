@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CreateUserContoller } from '@src/presentation/controllers/create-user.controller';
-import { ICreateUserUseCase } from '@src/domain/use-cases/create-user-use-case';
+import { CreateUserUseCase } from '@src/domain/use-cases/create-user-use-case';
 import { CreateUserParams } from '@src/domain/models/create-user';
 import { User } from '@src/domain/models/user';
 import { ResponseHandler } from '@/presentation/protocols/responses/response-handler';
@@ -18,7 +18,7 @@ const sutFactory = () => {
 };
 
 const useCaseMockFactory = () => {
-  class UseCaseMock implements ICreateUserUseCase {
+  class UseCaseMock implements CreateUserUseCase {
     async create(_input: CreateUserParams): Promise<User> {
       return responseDataMockFactory();
     }

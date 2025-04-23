@@ -1,5 +1,5 @@
 import { User } from '@/domain/models/user';
-import { IFindAllUsersUseCase } from '@/domain/use-cases/find-all-users-use-case';
+import { FindAllUsersUseCase } from '@/domain/use-cases/find-all-users-use-case';
 import { RequestModel } from '../protocols/requests/request-model';
 import { Controller } from '../protocols/controller/controller';
 import { ResponseHandler } from '../protocols/responses/response-handler';
@@ -17,7 +17,7 @@ type FindAllUsersRequestModel = RequestModel<
 
 export class FindAllUsersController implements Controller<User[]> {
   constructor(
-    private readonly findAllUsersUseCase: IFindAllUsersUseCase,
+    private readonly findAllUsersUseCase: FindAllUsersUseCase,
     private readonly presenter: ResponseHandler<User[]>,
   ) {}
 

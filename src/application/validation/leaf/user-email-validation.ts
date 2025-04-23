@@ -1,10 +1,10 @@
 import { EmailValidationError } from '@/application/errors/email-validator-error';
-import { IEmailValidator } from '@/application/protocols/validation/email-validator';
+import { EmailValidator } from '@/application/protocols/validation/email-validator';
 import { ValidationComposite } from '@/application/protocols/validation/validation-composite';
 import { CreateUserParams } from '@/domain/models/create-user';
 
 export class UserEmailValidator extends ValidationComposite<CreateUserParams> {
-  constructor(private readonly emailValidator: IEmailValidator) {
+  constructor(private readonly emailValidator: EmailValidator) {
     super();
   }
 

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { DefaultError } from '@/application/errors/default-error';
-import { Controller } from '@/application/ports/controllers/controller';
+import { Controller } from '@/presentation/protocols/controller/controller';
 
 export const expressRouteAdapter = <T>(controller: Controller<T>) => {
   return async (request: Request, response: Response) => {

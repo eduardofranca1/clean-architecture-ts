@@ -1,11 +1,11 @@
-import { RequestValidationError } from '../../application/errors/request-validator-error';
-import { Controller } from '../../application/ports/controllers/controller';
-import { RequestModel } from '../../application/ports/requests/request-model';
-import { ResponseHandler } from '../../application/ports/responses/response-handler';
-import { objectKeyExists } from '../../common/helpers/objects/object-key-exists';
-import { CreateUserParams } from '../../domain/models/create-user';
-import { User } from '../../domain/models/user';
-import { ICreateUserUseCase } from '../../domain/use-cases/create-user-use-case';
+import { CreateUserParams } from '@/domain/models/create-user';
+import { RequestModel } from '../protocols/requests/request-model';
+import { Controller } from '../protocols/controller/controller';
+import { User } from '@/domain/models/user';
+import { ICreateUserUseCase } from '@/domain/use-cases/create-user-use-case';
+import { ResponseHandler } from '../protocols/responses/response-handler';
+import { objectKeyExists } from '@/common/helpers/objects/object-key-exists';
+import { RequestValidationError } from '@/application/errors/request-validator-error';
 
 type RequestBody = RequestModel<CreateUserParams>;
 

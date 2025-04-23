@@ -1,8 +1,8 @@
-import { Controller } from '../../application/ports/controllers/controller';
-import { RequestModel } from '../../application/ports/requests/request-model';
-import { ResponseHandler } from '../../application/ports/responses/response-handler';
-import { User } from '../../domain/models/user';
-import { IFindAllUsersUseCase } from '../../domain/use-cases/find-all-users-use-case';
+import { User } from '@/domain/models/user';
+import { IFindAllUsersUseCase } from '@/domain/use-cases/find-all-users-use-case';
+import { RequestModel } from '../protocols/requests/request-model';
+import { Controller } from '../protocols/controller/controller';
+import { ResponseHandler } from '../protocols/responses/response-handler';
 
 type FindAllUsersRequestModel = RequestModel<
   void,

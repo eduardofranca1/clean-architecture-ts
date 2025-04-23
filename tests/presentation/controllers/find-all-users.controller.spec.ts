@@ -1,5 +1,5 @@
-import { ResponseHandler } from '@src/application/ports/responses/response-handler';
-import { ResponseModel } from '@src/application/ports/responses/response-model';
+import { ResponseHandler } from '@/presentation/protocols/responses/response-handler';
+import { ResponseModel } from '@/presentation/protocols/responses/response-model';
 import { User } from '@src/domain/models/user';
 import {
   FindAllUsersRequest,

@@ -1,8 +1,8 @@
 import { RequestValidationError } from '@/application/errors/request-validator-error';
-import { Controller } from '@/application/ports/controllers/controller';
-import { RequestModel } from '@/application/ports/requests/request-model';
-import { ResponseHandler } from '@/application/ports/responses/response-handler';
+import { Controller } from '@/presentation/protocols/controller/controller';
+import { RequestModel } from '@/presentation/protocols/requests/request-model';
 import { IDeleteUserByIdUseCase } from '@/domain/use-cases/delete-user-by-id-use-case';
+import { ResponseHandler } from '../protocols/responses/response-handler';
 
 export class DeleteUserByIdController implements Controller {
   constructor(

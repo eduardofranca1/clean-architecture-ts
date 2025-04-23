@@ -1,8 +1,8 @@
 import { User } from '@/domain/models/user';
 import { IFindUserByIdUseCase } from '@/domain/use-cases/find-user-by-id-use-case';
-import { IFindUserByIdRepository } from '../ports/repositories/find-user-by-id.repository';
+import { IFindUserByIdRepository } from '../protocols/repositories/find-user-by-id.repository';
 import { NotFoundError } from '../errors/not-found-error';
-import { ValidationComposite } from '../ports/validation/validation-composite';
+import { ValidationComposite } from '../protocols/validation/validation-composite';
 
 export class FindUserByIdUseCase implements IFindUserByIdUseCase {
   constructor(

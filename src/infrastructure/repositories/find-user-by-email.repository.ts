@@ -1,4 +1,4 @@
-import { IFindUserByEmailRepository } from '@/application/ports/repositories/find-user-by-email.repository';
+import { IFindUserByEmailRepository } from '@/application/protocols/repositories/find-user-by-email.repository';
 import { User } from '@/domain/models/user';
 import { MongoClient } from '../database/mongo-client';
 

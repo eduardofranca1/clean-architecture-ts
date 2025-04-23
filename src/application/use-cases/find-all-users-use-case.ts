@@ -3,8 +3,8 @@ import {
   FindAllUsersRequest,
   IFindAllUsersUseCase,
 } from '../../domain/use-cases/find-all-users-use-case';
-import { IFindAllUsersRepository } from '../ports/repositories/find-all-users-repository';
-import { ValidationComposite } from '../ports/validation/validation-composite';
+import { IFindAllUsersRepository } from '../protocols/repositories/find-all-users-repository';
+import { ValidationComposite } from '../protocols/validation/validation-composite';
 
 export class FindAllUsersUseCase implements IFindAllUsersUseCase {
   constructor(

@@ -1,5 +1,5 @@
 import { RequestValidationError } from '@/application/errors/request-validator-error';
-import { ValidationComposite } from '@/application/ports/validation/validation-composite';
+import { ValidationComposite } from '@/application/protocols/validation/validation-composite';
 import { isAPositiveNumber } from '@/common/helpers/numbers/isAPositiveNumber';
 import { FindAllUsersRequest } from '@/domain/use-cases/find-all-users-use-case';
 

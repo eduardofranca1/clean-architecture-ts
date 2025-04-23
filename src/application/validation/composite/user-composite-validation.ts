@@ -1,5 +1,5 @@
 import { InternalServerError } from '@/application/errors/internal-server-error';
-import { ValidationComposite } from '@/application/ports/validation/validation-composite';
+import { ValidationComposite } from '@/application/protocols/validation/validation-composite';
 import { CreateUserParams } from '@/domain/models/create-user';
 
 export class UserCompositeValidation extends ValidationComposite<CreateUserParams> {

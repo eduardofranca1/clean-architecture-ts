@@ -1,7 +1,7 @@
 import { UserExistsError } from '@/application/errors/user-exists-error';
-import { IFindUserByEmailRepository } from '@/application/ports/repositories/find-user-by-email.repository';
-import { ValidationComposite } from '@/application/ports/validation/validation-composite';
-import { ICreateUserRepository } from '@src/application/ports/repositories/create-user-repository';
+import { IFindUserByEmailRepository } from '@src/application/protocols/repositories/find-user-by-email.repository';
+import { ValidationComposite } from '@src/application/protocols/validation/validation-composite';
+import { ICreateUserRepository } from '@src/application/protocols/repositories/create-user-repository';
 import { CreateUserUseCase } from '@src/application/use-cases/create-user-use-case';
 import { CreateUserParams } from '@src/domain/models/create-user';
 import { User } from '@src/domain/models/user';

@@ -1,4 +1,4 @@
-import { IFindUserByIdRepository } from '@/application/ports/repositories/find-user-by-id.repository';
+import { IFindUserByIdRepository } from '@/application/protocols/repositories/find-user-by-id.repository';
 import { User } from '@/domain/models/user';
 import { MongoClient } from '../database/mongo-client';
 import { ObjectId } from 'mongodb';

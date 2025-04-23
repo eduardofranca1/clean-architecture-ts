@@ -41,8 +41,9 @@ This API project is being created using [Node.js](https://nodejs.org/en/), [Type
     - [x] FIND ALL USERS
     - [x] FIND USER BY ID
   - [ ] UPDATE
-  - [ ] DELETE
+  - [x] DELETE
 
 - [x] Request data validation
-- [ ] Error handling
+- [x] Error handling
 - [ ] User sign-in with token
+- [ ] Docker compose

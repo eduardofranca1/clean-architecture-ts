@@ -1,5 +1,5 @@
 import { RequestValidationError } from '@/application/errors/request-validator-error';
-import { ValidationComposite } from '@/application/ports/validation/validation-composite';
+import { ValidationComposite } from '@/application/protocols/validation/validation-composite';
 import { isEmptyString } from '@/common/helpers/strings/is-empty';
 import { isString } from '@/common/helpers/strings/is-string';
 import { CreateUserParams } from '@/domain/models/create-user';

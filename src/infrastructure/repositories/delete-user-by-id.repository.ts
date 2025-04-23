@@ -1,4 +1,4 @@
-import { IDeleteUserByIdRepository } from '@/application/ports/repositories/delete-user-by-id.repository';
+import { IDeleteUserByIdRepository } from '@/application/protocols/repositories/delete-user-by-id.repository';
 import { MongoClient } from '../database/mongo-client';
 import { ObjectId } from 'mongodb';
 

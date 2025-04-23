@@ -1,14 +1,11 @@
 import { User } from '../../domain/models/user';
-import {
-  FindAllUsersRequest,
-  IFindAllUsersUseCase,
-} from '../../domain/use-cases/find-all-users-use-case';
-import { IFindAllUsersRepository } from '../protocols/repositories/find-all-users-repository';
+import { FindAllUsersRequest, IFindAllUsersUseCase } from '../../domain/use-cases/find-all-users-use-case';
+import { FindAllUsersRepository } from '../protocols/repositories/find-all-users-repository';
 import { ValidationComposite } from '../protocols/validation/validation-composite';
 
 export class FindAllUsersUseCase implements IFindAllUsersUseCase {
   constructor(
-    private readonly findAllUsersRepository: IFindAllUsersRepository,
+    private readonly findAllUsersRepository: FindAllUsersRepository,
     private readonly validator: ValidationComposite<FindAllUsersRequest>,
   ) {}
 
@@ -27,11 +24,6 @@ export class FindAllUsersUseCase implements IFindAllUsersUseCase {
 
     await this.validator.validate({ orderBy, order, limit, skip });
 
-    return await this.findAllUsersRepository.findAll(
-      orderBy,
-      order,
-      limit,
-      skip,
-    );
+    return await this.findAllUsersRepository.findAll(orderBy, order, limit, skip);
   }
 }

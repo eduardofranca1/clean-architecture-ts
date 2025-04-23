@@ -1,13 +1,13 @@
 import { IDeleteUserByIdUseCase } from '@/domain/use-cases/delete-user-by-id-use-case';
-import { IDeleteUserByIdRepository } from '../protocols/repositories/delete-user-by-id.repository';
-import { IFindUserByIdRepository } from '../protocols/repositories/find-user-by-id.repository';
+import { DeleteUserByIdRepository } from '../protocols/repositories/delete-user-by-id.repository';
+import { FindUserByIdRepository } from '../protocols/repositories/find-user-by-id.repository';
 import { NotFoundError } from '../errors/not-found-error';
 import { ValidationComposite } from '../protocols/validation/validation-composite';
 
 export class DeleteUserByIdUseCase implements IDeleteUserByIdUseCase {
   constructor(
-    private readonly deleteUserByIdRepository: IDeleteUserByIdRepository,
-    private readonly findUserByIdRepository: IFindUserByIdRepository,
+    private readonly deleteUserByIdRepository: DeleteUserByIdRepository,
+    private readonly findUserByIdRepository: FindUserByIdRepository,
     private readonly validation: ValidationComposite,
   ) {}
   async deleteById(id: string): Promise<void> {

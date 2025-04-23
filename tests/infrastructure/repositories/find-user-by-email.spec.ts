@@ -1,12 +1,12 @@
 import { Collection } from 'mongodb';
 import { MongoClient } from '@/infrastructure/database/mongo-client';
-import { FindUserByEmailRepository } from '@/infrastructure/repositories/find-user-by-email.repository';
+import { FindUserByEmailMongoRepository } from '@/infrastructure/repositories/find-user-by-email.repository';
 import env from '@/main/config/env';
 
 let userCollection: Collection;
 
-const makeSut = (): FindUserByEmailRepository => {
-  return new FindUserByEmailRepository();
+const makeSut = (): FindUserByEmailMongoRepository => {
+  return new FindUserByEmailMongoRepository();
 };
 
 describe('Find_User_By_Email_Repository', () => {

@@ -1,12 +1,12 @@
 import { Collection } from 'mongodb';
 import { MongoClient } from '@src/infrastructure/database/mongo-client';
-import { FindAllUsersRepository } from '@src/infrastructure/repositories/find-all-user.repository';
+import { FindAllUsersMongoRepository } from '@src/infrastructure/repositories/find-all-user.repository';
 import env from '@/main/config/env';
 
 let userCollection: Collection;
 
-const makeSut = (): FindAllUsersRepository => {
-  return new FindAllUsersRepository();
+const makeSut = (): FindAllUsersMongoRepository => {
+  return new FindAllUsersMongoRepository();
 };
 
 describe('Find_All_Users_Repository', () => {

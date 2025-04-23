@@ -1,5 +1,5 @@
-import { IDeleteUserByIdRepository } from '@src/application/protocols/repositories/delete-user-by-id.repository';
-import { IFindUserByIdRepository } from '@src/application/protocols/repositories/find-user-by-id.repository';
+import { DeleteUserByIdRepository } from '@src/application/protocols/repositories/delete-user-by-id.repository';
+import { FindUserByIdRepository } from '@src/application/protocols/repositories/find-user-by-id.repository';
 import { ValidationComposite } from '@src/application/protocols/validation/validation-composite';
 import { DeleteUserByIdUseCase } from '@src/application/use-cases/delete-user-by-id-use-case';
 import { User } from '@/domain/models/user';
@@ -8,11 +8,7 @@ const sutFactory = () => {
   const deleteUserByIdRepositoryMock = deleteUserByIdRepositoryMockFactory();
   const findUserByIdRepositoryMock = findUserByIdRepositoryMockFactory();
   const validationMock = validationMockFatory();
-  const sut = new DeleteUserByIdUseCase(
-    deleteUserByIdRepositoryMock,
-    findUserByIdRepositoryMock,
-    validationMock,
-  );
+  const sut = new DeleteUserByIdUseCase(deleteUserByIdRepositoryMock, findUserByIdRepositoryMock, validationMock);
   return {
     deleteUserByIdRepositoryMock,
     findUserByIdRepositoryMock,
@@ -22,14 +18,14 @@ const sutFactory = () => {
 };
 
 const deleteUserByIdRepositoryMockFactory = () => {
-  class Repository implements IDeleteUserByIdRepository {
+  class Repository implements DeleteUserByIdRepository {
     async deleteById(_id: string): Promise<void> {}
   }
   return new Repository();
 };
 
 const findUserByIdRepositoryMockFactory = () => {
-  class Repository implements IFindUserByIdRepository {
+  class Repository implements FindUserByIdRepository {
     async findById(_id: string): Promise<User | null> {
       return {
         id: '1',
@@ -56,10 +52,7 @@ describe('Delete_User_By_Id_Use_Case', () => {
 
   it('should call the deleteUserByIdRepository with the correct values', async () => {
     const { sut, deleteUserByIdRepositoryMock } = sutFactory();
-    const deleteUserByIdRepositorySpy = jest.spyOn(
-      deleteUserByIdRepositoryMock,
-      'deleteById',
-    );
+    const deleteUserByIdRepositorySpy = jest.spyOn(deleteUserByIdRepositoryMock, 'deleteById');
     await sut.deleteById('1');
     expect(deleteUserByIdRepositorySpy).toHaveBeenCalledTimes(1);
     expect(deleteUserByIdRepositorySpy).toHaveBeenCalledWith('1');
@@ -67,10 +60,7 @@ describe('Delete_User_By_Id_Use_Case', () => {
 
   it('should call the findUserByIdRepository with the correct values', async () => {
     const { sut, findUserByIdRepositoryMock } = sutFactory();
-    const findUserByIdRepositorySpy = jest.spyOn(
-      findUserByIdRepositoryMock,
-      'findById',
-    );
+    const findUserByIdRepositorySpy = jest.spyOn(findUserByIdRepositoryMock, 'findById');
     await sut.deleteById('1');
     expect(findUserByIdRepositorySpy).toHaveBeenCalledTimes(1);
     expect(findUserByIdRepositorySpy).toHaveBeenCalledWith('1');

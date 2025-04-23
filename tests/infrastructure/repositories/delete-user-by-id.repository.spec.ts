@@ -1,12 +1,12 @@
 import { Collection } from 'mongodb';
 import env from '@/main/config/env';
 import { MongoClient } from '@/infrastructure/database/mongo-client';
-import { DeleteUserByIdRepository } from '@/infrastructure/repositories/delete-user-by-id.repository';
+import { DeleteUserByIdMongoRepository } from '@/infrastructure/repositories/delete-user-by-id.repository';
 
 let userCollection: Collection;
 
-const makeSut = (): DeleteUserByIdRepository => {
-  return new DeleteUserByIdRepository();
+const makeSut = (): DeleteUserByIdMongoRepository => {
+  return new DeleteUserByIdMongoRepository();
 };
 
 describe('Delete_User_By_Id_Repository', () => {

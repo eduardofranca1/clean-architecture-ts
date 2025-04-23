@@ -1,3 +1,3 @@
-export interface IDeleteUserByIdRepository {
+export interface DeleteUserByIdRepository {
   deleteById(id: string): Promise<void>;
 }

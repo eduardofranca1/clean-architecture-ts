@@ -4,11 +4,11 @@ import { CreateUserMongoRepository } from '@/infrastructure/repositories/create-
 import { GenericCreatedResponse } from '@/presentation/responses/generic-created-response';
 import { User } from '@/domain/models/user';
 import { CreateUserValidation } from '@/application/validation/composite/create-user-validation';
-import { FindUserByEmailRepository } from '@/infrastructure/repositories/find-user-by-email.repository';
+import { FindUserByEmailMongoRepository } from '@/infrastructure/repositories/find-user-by-email.repository';
 
 export const createUserControllerFactory = () => {
   const createUserRepository = new CreateUserMongoRepository();
-  const findUserByIdRepository = new FindUserByEmailRepository();
+  const findUserByIdRepository = new FindUserByEmailMongoRepository();
   const createUserValidation = new CreateUserValidation();
   const createUserUseCase = new CreateUserUseCase(
     createUserRepository,

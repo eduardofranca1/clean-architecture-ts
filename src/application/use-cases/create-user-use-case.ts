@@ -1,23 +1,21 @@
 import { ICreateUserUseCase } from '@/domain/use-cases/create-user-use-case';
-import { ICreateUserRepository } from '../protocols/repositories/create-user-repository';
+import { CreateUserRepository } from '../protocols/repositories/create-user-repository';
 import { CreateUserParams } from '@/domain/models/create-user';
 import { ValidationComposite } from '../protocols/validation/validation-composite';
 import { User } from '@/domain/models/user';
-import { IFindUserByEmailRepository } from '../protocols/repositories/find-user-by-email.repository';
+import { FindUserByEmailRepository } from '../protocols/repositories/find-user-by-email.repository';
 import { UserExistsError } from '../errors/user-exists-error';
 
 export class CreateUserUseCase implements ICreateUserUseCase {
   constructor(
-    private readonly createUserRepository: ICreateUserRepository,
-    private readonly findUserByEmailRepository: IFindUserByEmailRepository,
+    private readonly createUserRepository: CreateUserRepository,
+    private readonly findUserByEmailRepository: FindUserByEmailRepository,
     private readonly validator: ValidationComposite<CreateUserParams>,
   ) {}
   async create(input: CreateUserParams): Promise<User> {
     await this.validator.validate(input);
 
-    const findUserEmail = await this.findUserByEmailRepository.findByEmail(
-      input.email,
-    );
+    const findUserEmail = await this.findUserByEmailRepository.findByEmail(input.email);
 
     if (findUserEmail) {
       throw new UserExistsError('User already exists');

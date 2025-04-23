@@ -1,6 +1,6 @@
 import { User } from '../../../domain/models/user';
 
-export interface IFindAllUsersRepository {
+export interface FindAllUsersRepository {
   findAll(
     orderBy: string,
     order: 'asc' | 'desc',

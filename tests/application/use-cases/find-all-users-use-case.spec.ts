@@ -1,6 +1,6 @@
 import { ValidationComposite } from '@src/application/protocols/validation/validation-composite';
 import { FindAllUsersRequest } from '@src/domain/use-cases/find-all-users-use-case';
-import { IFindAllUsersRepository } from '@src/application/protocols/repositories/find-all-users-repository';
+import { FindAllUsersRepository } from '@src/application/protocols/repositories/find-all-users-repository';
 import { FindAllUsersUseCase } from '@src/application/use-cases/find-all-users-use-case';
 import { User } from '@src/domain/models/user';
 
@@ -26,7 +26,7 @@ const validateMockFactory = () => {
 };
 
 const findAllUsersRepositoryMockFactory = () => {
-  class FindAllUsersRepositoryMock implements IFindAllUsersRepository {
+  class FindAllUsersRepositoryMock implements FindAllUsersRepository {
     async findAll(): Promise<User[]> {
       return [
         {

@@ -7,6 +7,8 @@
     "dev": "ts-node-dev -r tsconfig-paths/register src/infrastructure/express/server.ts",
     "build": "rimraf dist && tsc -p tsconfig-build.json",
     "build:watch": "rimraf dist && tsc -p tsconfig-build.json -w",
+    "docker:up": "npm run build && docker compose up -d",
+    "docker:down": "docker compose stop",
     "test": "jest --runInBand",
     "test:coverage": "jest --coverage"
   },

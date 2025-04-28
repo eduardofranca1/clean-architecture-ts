@@ -26,11 +26,18 @@ This API project is being created using [Node.js](https://nodejs.org/en/), [Type
 - [TypeScript](https://www.typescriptlang.org/)
 - [Express](https://expressjs.com/pt-br/)
 - [MongoDB](https://www.mongodb.com/)
+- [Docker](https://docs.docker.com/compose/)
 - [Jest](https://jestjs.io/pt-BR/)
 - [Validator](https://github.com/validatorjs/validator.js)
 - [Git](https://git-scm.com/)
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
+
+## Docker Compose
+
+- **docker compose up -d**: command to build the docker compose file
+- **docker compose stop**: command to stop the docker image
+- **docker compose rm -fsv**: command stop and remove all containers from your project
 
 ## TODO
 
@@ -44,6 +51,6 @@ This API project is being created using [Node.js](https://nodejs.org/en/), [Type
   - [x] DELETE
 
 - [x] Request data validation
-- [x] Error handling
+- [x] Docker compose
+- [ ] Error handling
 - [ ] User sign-in with token
-- [ ] Docker compose

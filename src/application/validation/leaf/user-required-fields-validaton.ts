@@ -13,7 +13,7 @@ export class UserRequiredFieldsValidation extends ValidationComposite<CreateUser
     }
 
     if (!isString(email) || isEmptyString(email) || !email) {
-      throw new RequestValidationError('Email is required');
+      throw new RequestValidationError('E-mail is required');
     }
   }
 }

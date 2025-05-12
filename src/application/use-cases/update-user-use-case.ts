@@ -13,7 +13,7 @@ export class UpdateUser implements UpdateUserUseCase {
     private readonly findUserByEmailRepository: FindUserByEmailRepository,
     private readonly validation: ValidationComposite,
   ) {}
-  async update(id: string, request: { name: string; email: string }): Promise<void> {
+  async update(id: string, request: { name?: string; email?: string }): Promise<void> {
     await this.validation.validate(request);
 
     const user = await this.findUserByIdRepository.findById(id);
@@ -26,8 +26,10 @@ export class UpdateUser implements UpdateUserUseCase {
     await this.updateUserRepository.update(id, { name: request.name, email: request.email });
   }
 
-  private async checkEmail(emailToUpdate: string) {
-    const result = await this.findUserByEmailRepository.findByEmail(emailToUpdate);
-    if (result) throw new BadRequestError('E-mail already in use');
+  private async checkEmail(emailToUpdate?: string) {
+    if (emailToUpdate) {
+      const result = await this.findUserByEmailRepository.findByEmail(emailToUpdate);
+      if (result) throw new BadRequestError('E-mail already in use');
+    }
   }
 }

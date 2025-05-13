@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DeleteUserByIdUseCase } from '@/domain/use-cases/delete-user-by-id-use-case';
 import { DeleteUserByIdController } from '@/presentation/controllers/delete-user-by-id.controller';
 import { ResponseHandler } from '@/presentation/protocols/responses/response-handler';
@@ -23,10 +24,10 @@ const useCaseMockFactory = () => {
 
 const presenterMockFactory = () => {
   class PresenterMock implements ResponseHandler {
-    async response(_params: string): Promise<ResponseModel<string>> {
+    async response(_params: any): Promise<ResponseModel<void>> {
       return {
-        statusCode: 200,
-        body: 'OK',
+        statusCode: 204,
+        body: undefined,
       };
     }
   }
@@ -34,12 +35,12 @@ const presenterMockFactory = () => {
 };
 
 describe('Delete_User_By_Id_Controller', () => {
-  it('should return 200 status code and the response', async () => {
+  it('should return 204 status code no content response', async () => {
     const { sut } = sutFactory();
     const response = await sut.handleRequest({ params: { id: '1' } });
     expect(response).toEqual({
-      statusCode: 200,
-      body: 'OK',
+      statusCode: 204,
+      body: undefined,
     });
   });
 
@@ -56,7 +57,7 @@ describe('Delete_User_By_Id_Controller', () => {
     const presenterSpy = jest.spyOn(presenterMock, 'response');
     await sut.handleRequest({ params: { id: '1' } });
     expect(presenterSpy).toHaveBeenCalledTimes(1);
-    expect(presenterSpy).toHaveBeenCalledWith('OK');
+    expect(presenterSpy).toHaveBeenCalledWith();
   });
 
   it('should throw error if the request does not exist', async () => {
@@ -65,7 +66,6 @@ describe('Delete_User_By_Id_Controller', () => {
 
     try {
       await sut.handleRequest({});
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       error = e;
     }

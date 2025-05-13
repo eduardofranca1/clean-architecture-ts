@@ -7,7 +7,7 @@ import { ResponseHandler } from '../protocols/responses/response-handler';
 export class DeleteUserByIdController implements Controller {
   constructor(
     private readonly deleteUserByIdUseCase: DeleteUserByIdUseCase,
-    private readonly presenter: ResponseHandler<string>,
+    private readonly presenter: ResponseHandler<void>,
   ) {}
   async handleRequest(requestModel: RequestModel<void, { id: string }>) {
     if (!requestModel || !requestModel.params || !requestModel.params.id) {
@@ -15,6 +15,6 @@ export class DeleteUserByIdController implements Controller {
     }
     const { id } = requestModel.params;
     await this.deleteUserByIdUseCase.deleteById(id);
-    return await this.presenter.response('OK');
+    return await this.presenter.response();
   }
 }

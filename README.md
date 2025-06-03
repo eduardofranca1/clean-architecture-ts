@@ -47,7 +47,7 @@ This API project is being created using [Node.js](https://nodejs.org/en/), [Type
   - [x] READ
     - [x] FIND ALL USERS
     - [x] FIND USER BY ID
-  - [ ] UPDATE
+  - [x] UPDATE
   - [x] DELETE
 
 - [x] Request data validation

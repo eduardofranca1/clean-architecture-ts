@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DeleteUserByIdUseCase } from '@/domain/use-cases/delete-user-by-id-use-case';
-import { DeleteUserByIdController } from '@/presentation/controllers/delete-user-by-id.controller';
+import { UpdateUserUseCase } from '@/domain/use-cases/update-user-use-case';
+import { UpdateUserController } from '@/presentation/controllers/update-user.controller';
 import { ResponseHandler } from '@/presentation/protocols/responses/response-handler';
 import { ResponseModel } from '@/presentation/protocols/responses/response-model';
 
 const sutFactory = () => {
   const useCaseMock = useCaseMockFactory();
   const presenterMock = presenterMockFactory();
-  const sut = new DeleteUserByIdController(useCaseMock, presenterMock);
+  const sut = new UpdateUserController(useCaseMock, presenterMock);
   return {
     useCaseMock,
     presenterMock,
@@ -16,15 +16,15 @@ const sutFactory = () => {
 };
 
 const useCaseMockFactory = () => {
-  class DeleteUserById implements DeleteUserByIdUseCase {
-    async deleteById(_id: string): Promise<void> {}
+  class UseCaseMock implements UpdateUserUseCase {
+    async update(_id: string, _user: { name?: string; email?: string }): Promise<void> {}
   }
-  return new DeleteUserById();
+  return new UseCaseMock();
 };
 
 const presenterMockFactory = () => {
-  class PresenterMock implements ResponseHandler {
-    async response(_params: any): Promise<ResponseModel<void>> {
+  class PresenterMock implements ResponseHandler<void> {
+    async response(_body?: any): Promise<ResponseModel<void>> {
       return {
         statusCode: 204,
         body: undefined,
@@ -34,10 +34,20 @@ const presenterMockFactory = () => {
   return new PresenterMock();
 };
 
-describe('Delete_User_By_Id_Controller', () => {
-  it('should return 204 status code and with no content', async () => {
+const requestDataMock = () => {
+  return {
+    body: {
+      name: 'first name',
+      email: 'update@email.com',
+    },
+    params: { id: '1' },
+  };
+};
+
+describe('Update_User_Controller', () => {
+  it('should return 204 status code with no content', async () => {
     const { sut } = sutFactory();
-    const response = await sut.handleRequest({ params: { id: '1' } });
+    const response = await sut.handleRequest(requestDataMock());
     expect(response).toEqual({
       statusCode: 204,
     });
@@ -45,21 +55,21 @@ describe('Delete_User_By_Id_Controller', () => {
 
   it('should call the use case with the correct values', async () => {
     const { sut, useCaseMock } = sutFactory();
-    const useCaseSpy = jest.spyOn(useCaseMock, 'deleteById');
-    await sut.handleRequest({ params: { id: '1' } });
+    const useCaseSpy = jest.spyOn(useCaseMock, 'update');
+    await sut.handleRequest(requestDataMock());
     expect(useCaseSpy).toHaveBeenCalledTimes(1);
-    expect(useCaseSpy).toHaveBeenCalledWith('1');
+    expect(useCaseSpy).toHaveBeenCalledWith('1', { name: 'first name', email: 'update@email.com' });
   });
 
   it('should call the presenter with the correct values', async () => {
     const { sut, presenterMock } = sutFactory();
     const presenterSpy = jest.spyOn(presenterMock, 'response');
-    await sut.handleRequest({ params: { id: '1' } });
+    await sut.handleRequest(requestDataMock());
     expect(presenterSpy).toHaveBeenCalledTimes(1);
     expect(presenterSpy).toHaveBeenCalledWith();
   });
 
-  it('should throw error if the request does not exist', async () => {
+  it('should throw error if the request.body or request.params does not exist', async () => {
     const { sut } = sutFactory();
     let error;
 
@@ -68,9 +78,8 @@ describe('Delete_User_By_Id_Controller', () => {
     } catch (e: any) {
       error = e;
     }
-
     expect(error.name).toBe('RequestValidationError');
     expect(error.statusCode).toBe(400);
-    expect(error.message).toBe('The request params not found');
+    expect(error.message).toBe('Invalid request');
   });
 });

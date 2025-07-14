@@ -1,3 +1,4 @@
+import 'module-alias/register';
 import express from 'express';
 import env from '@/main/config/env';
 import { MongoClient } from '../database/mongo-client';

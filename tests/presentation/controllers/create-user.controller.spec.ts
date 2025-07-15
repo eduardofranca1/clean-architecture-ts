@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { CreateUserContoller } from '@src/presentation/controllers/create-user.controller';
-import { CreateUserUseCase } from '@src/domain/use-cases/create-user-use-case';
-import { CreateUserParams } from '@src/domain/models/create-user';
-import { User } from '@src/domain/models/user';
+import { CreateUserContoller } from '@/presentation/controllers/create-user.controller';
+import { CreateUserUseCase } from '@/domain/use-cases/create-user-use-case';
+import { CreateUserParams } from '@/domain/models/create-user';
+import { User } from '@/domain/models/user';
 import { ResponseHandler } from '@/presentation/protocols/responses/response-handler';
 import { ResponseModel } from '@/presentation/protocols/responses/response-model';
 

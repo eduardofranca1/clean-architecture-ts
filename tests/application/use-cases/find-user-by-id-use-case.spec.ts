@@ -1,8 +1,8 @@
-import { NotFoundError } from '@src/application/errors/not-found-error';
-import { FindUserByIdRepository } from '@src/application/protocols/repositories/find-user-by-id.repository';
-import { ValidationComposite } from '@src/application/protocols/validation/validation-composite';
-import { FindUserById } from '@src/application/use-cases/find-user-by-id-use-case';
-import { User } from '@src/domain/models/user';
+import { NotFoundError } from '@/application/errors/not-found-error';
+import { FindUserByIdRepository } from '@/application/protocols/repositories/find-user-by-id.repository';
+import { ValidationComposite } from '@/application/protocols/validation/validation-composite';
+import { FindUserById } from '@/application/use-cases/find-user-by-id-use-case';
+import { User } from '@/domain/models/user';
 
 const sutFactory = () => {
   const findUserByIdRepositoryMock = findUserByIdRepositoryMockFactory();

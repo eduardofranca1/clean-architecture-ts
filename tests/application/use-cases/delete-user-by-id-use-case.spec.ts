@@ -1,7 +1,7 @@
-import { DeleteUserByIdRepository } from '@src/application/protocols/repositories/delete-user-by-id.repository';
-import { FindUserByIdRepository } from '@src/application/protocols/repositories/find-user-by-id.repository';
-import { ValidationComposite } from '@src/application/protocols/validation/validation-composite';
-import { DeleteUserById } from '@src/application/use-cases/delete-user-by-id-use-case';
+import { DeleteUserByIdRepository } from '@/application/protocols/repositories/delete-user-by-id.repository';
+import { FindUserByIdRepository } from '@/application/protocols/repositories/find-user-by-id.repository';
+import { ValidationComposite } from '@/application/protocols/validation/validation-composite';
+import { DeleteUserById } from '@/application/use-cases/delete-user-by-id-use-case';
 import { User } from '@/domain/models/user';
 
 const sutFactory = () => {

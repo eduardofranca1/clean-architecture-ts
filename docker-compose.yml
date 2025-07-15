@@ -1,4 +1,3 @@
-# como habilitar permissão no ubuntu para que no meu docker compose eu possa usar o comando volumes: - ./data:/data/db
 services:
   mongo:
     container_name: mongodb-container

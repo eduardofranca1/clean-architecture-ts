@@ -1,9 +1,12 @@
 {
-  "name": "clean-ts",
+  "name": "clean-architecture-ts",
   "version": "1.0.0",
-  "main": "index.js",
+  "author": "Eduardo França",
+  "license": "ISC",
+  "description": "NodeJS Rest API created using Clean Architecture, TypeScript, and Design Patterns",
+  "repository": "https://github.com/eduardofranca1/clean-architecture-ts",
   "scripts": {
-    "start": "node dist/src/infrastructure/express/server.js",
+    "start": "node dist/infrastructure/express/server.js",
     "dev": "ts-node-dev -r tsconfig-paths/register src/infrastructure/express/server.ts",
     "build": "rimraf dist && tsc -p tsconfig-build.json",
     "build:watch": "rimraf dist && tsc -p tsconfig-build.json -w",
@@ -12,11 +15,6 @@
     "test": "jest --runInBand",
     "test:coverage": "jest --coverage"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "description": "",
   "dependencies": {
     "express": "^4.21.2",
     "module-alias": "^2.2.3",
@@ -40,7 +38,6 @@
     "typescript-eslint": "^8.29.0"
   },
   "_moduleAliases": {
-    "@": "dist/src",
-    "@src": "dist/src"
+    "@": "dist"
   }
 }

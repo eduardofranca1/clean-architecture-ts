@@ -1,11 +1,11 @@
 import { UserExistsError } from '@/application/errors/user-exists-error';
-import { FindUserByEmailRepository } from '@src/application/protocols/repositories/find-user-by-email.repository';
-import { ValidationComposite } from '@src/application/protocols/validation/validation-composite';
-import { CreateUserRepository } from '@src/application/protocols/repositories/create-user-repository';
-import { CreateUser } from '@src/application/use-cases/create-user-use-case';
-import { CreateUserParams } from '@src/domain/models/create-user';
-import { User } from '@src/domain/models/user';
-import { createUserRequestFactory, userResponseFactory } from '@tests/domain/mocks/mock-user';
+import { FindUserByEmailRepository } from '@/application/protocols/repositories/find-user-by-email.repository';
+import { ValidationComposite } from '@/application/protocols/validation/validation-composite';
+import { CreateUserRepository } from '@/application/protocols/repositories/create-user-repository';
+import { CreateUser } from '@/application/use-cases/create-user-use-case';
+import { CreateUserParams } from '@/domain/models/create-user';
+import { User } from '@/domain/models/user';
+import { createUserRequestFactory, userResponseFactory } from '@/tests/domain/mocks/mock-user';
 
 const createUserRepositoryMockFactory = (): CreateUserRepository => {
   class CreateUserRepositoryMock implements CreateUserRepository {

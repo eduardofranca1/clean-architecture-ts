@@ -1,8 +1,8 @@
 import { ResponseHandler } from '@/presentation/protocols/responses/response-handler';
 import { ResponseModel } from '@/presentation/protocols/responses/response-model';
-import { User } from '@src/domain/models/user';
-import { FindAllUsersRequest, FindAllUsersUseCase } from '@src/domain/use-cases/find-all-users-use-case';
-import { FindAllUsersController } from '@src/presentation/controllers/find-all-users.controller';
+import { User } from '@/domain/models/user';
+import { FindAllUsersRequest, FindAllUsersUseCase } from '@/domain/use-cases/find-all-users-use-case';
+import { FindAllUsersController } from '@/presentation/controllers/find-all-users.controller';
 
 const sutFactory = () => {
   const useCaseMock = useCaseMockFactory();

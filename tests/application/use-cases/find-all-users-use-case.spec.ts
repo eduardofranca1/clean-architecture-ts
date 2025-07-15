@@ -1,8 +1,8 @@
-import { ValidationComposite } from '@src/application/protocols/validation/validation-composite';
-import { FindAllUsersRequest } from '@src/domain/use-cases/find-all-users-use-case';
-import { FindAllUsersRepository } from '@src/application/protocols/repositories/find-all-users-repository';
-import { FindAllUsers } from '@src/application/use-cases/find-all-users-use-case';
-import { User } from '@src/domain/models/user';
+import { ValidationComposite } from '@/application/protocols/validation/validation-composite';
+import { FindAllUsersRequest } from '@/domain/use-cases/find-all-users-use-case';
+import { FindAllUsersRepository } from '@/application/protocols/repositories/find-all-users-repository';
+import { FindAllUsers } from '@/application/use-cases/find-all-users-use-case';
+import { User } from '@/domain/models/user';
 
 const sutFactory = () => {
   const findAllUsersRepositoryMock = findAllUsersRepositoryMockFactory();

@@ -1,5 +1,5 @@
-import { User } from '../../domain/models/user';
-import { FindAllUsersRequest, FindAllUsersUseCase } from '../../domain/use-cases/find-all-users-use-case';
+import { FindAllUsersRequest, FindAllUsersUseCase } from '@/domain/use-cases/find-all-users-use-case';
+import { User } from '@/domain/models/user';
 import { FindAllUsersRepository } from '../protocols/repositories/find-all-users-repository';
 import { ValidationComposite } from '../protocols/validation/validation-composite';
 

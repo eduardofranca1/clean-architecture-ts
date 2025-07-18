@@ -4,9 +4,10 @@
 
 This API project is being created using [Node.js](https://nodejs.org/en/), [Typescript](https://www.typescriptlang.org/), and the [Express Framework](https://expressjs.com/), following principles of the [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html), [SOLID](https://www.geeksforgeeks.org/solid-principle-in-programming-understand-with-real-life-examples/) principles, [TDD (Test-Driven Development)](https://www.browserstack.com/guide/what-is-test-driven-development), and [Design Patterns](https://refactoring.guru/design-patterns).
 
-### Summary
+## Summary
 
 - [How start the project](#how-start-the-project)
+- [API Routes](#api-routes)
 - [Methodologies and Designs](#methodologies-and-designs)
 - [Principles](#principles)
 - [Design Patterns](#design-patterns)
@@ -14,48 +15,86 @@ This API project is being created using [Node.js](https://nodejs.org/en/), [Type
 - [Docker Compose](#docker-compose)
 - [TODO](#todo)
 
-### How start the project
+## How start the project
 
-**if you want to run the project in a development environment to test and debug, follow these commands:**
+**if you want to run the project in a development environment to test and debug, open two different terminals and follow these commands:**
 
-- npm run build:watch
-- npm run debug
+In first terminal:
+
+```bash
+npm run build:watch
+```
+
+In second terminal:
+
+```bash
+npm run debug
+```
 
 **To start the server in production mode:**
 
-- npm run build
-- npm run start
+First run:
+
+```bash
+npm run build
+```
+
+Second run:
+
+```bash
+npm run start
+```
 
 **Start the server using Docker:**
 
+To start the containers
+
+```bash
 - npm run docker:up
-  - to start the containers
-- npm run docker:down
-  - to stop the containers
+```
+
+To stop the containers
+
+```bash
+npm run docker:down
+```
 
 **Run tests:**
 
-- npm run test
+```bash
+npm run test
+```
 
-### Methodologies and Designs
+## API Routes
+
+| `/api`     |              |                       |     |
+| ---------- | ------------ | --------------------- | --- |
+| **Method** | **Route**    | **Description**       |
+| POST       | `/users`     | create a new user     |
+| GET        | `/users/:id` | get one user by id    |
+| GET        | `/users`     | get all users         |
+| PUT        | `/users/:id` | update one user by id |
+| DELETE     | `/users/:id` | delete one user by id |
+
+## Methodologies and Designs
 
 - TDD
 - Clean Architecture
 - Conventional Commits
 
-### Principles
+## Principles
 
 - SOLID
 - Small Commits
 
-### Design Patterns
+## Design Patterns
 
 - Adapter
 - Composite
 - Dependency Injection
 - Factory Method
 
-### Libraries and Tools
+## Libraries and Tools
 
 - [NPM](https://www.npmjs.com/)
 - [TypeScript](https://www.typescriptlang.org/)
@@ -69,13 +108,13 @@ This API project is being created using [Node.js](https://nodejs.org/en/), [Type
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 
-### Docker Compose
+## Docker Compose
 
 - **docker compose up -d**: command to build the docker compose file
 - **docker compose stop**: command to stop the docker image
 - **docker compose rm -fsv**: command stop and remove all containers from your project
 
-### TODO
+## TODO
 
 - [x] Create CRUD operations for "user"
 
@@ -88,5 +127,6 @@ This API project is being created using [Node.js](https://nodejs.org/en/), [Type
 
 - [x] Request data validation
 - [x] Docker compose
+- [ ] Integration Tests
 - [ ] Error handling
 - [ ] User sign-in with token

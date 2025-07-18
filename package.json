@@ -7,9 +7,9 @@
   "repository": "https://github.com/eduardofranca1/clean-architecture-ts",
   "scripts": {
     "start": "node dist/infrastructure/express/server.js",
-    "dev": "ts-node-dev -r tsconfig-paths/register src/infrastructure/express/server.ts",
     "build": "rimraf dist && tsc -p tsconfig-build.json",
     "build:watch": "rimraf dist && tsc -p tsconfig-build.json -w",
+    "debug": "nodemon -L --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/infrastructure/express/server.ts",
     "docker:up": "npm run build && docker compose up -d",
     "docker:down": "docker compose stop",
     "test": "jest --runInBand",
@@ -19,6 +19,7 @@
     "express": "^4.21.2",
     "module-alias": "^2.2.3",
     "mongodb": "^6.13.0",
+    "nodemon": "^3.1.10",
     "validator": "^13.15.0"
   },
   "devDependencies": {
@@ -32,7 +33,6 @@
     "jest": "^29.7.0",
     "prettier": "^3.5.3",
     "ts-jest": "^29.2.5",
-    "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.29.0"
